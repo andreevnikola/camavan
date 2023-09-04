@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         primary: "#d42a55",
-        "dark-transparenty": "rgba(122, 122, 122, 0.2)",
+        "dark-transparenty": "rgba(122, 122, 122, 0.3)",
       },
     },
   },
