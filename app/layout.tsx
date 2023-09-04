@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import PageLoading from "./loading";
 import { Suspense } from "react";
+import ReactQueryProvider from "./_trpc/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({
             <PageLoading />
           </ClerkLoading>
           <Header />
-          <Suspense fallback={<PageLoading />}>{children}</Suspense>
+          <Suspense fallback={<PageLoading />}>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </Suspense>
           <Footer />
         </body>
       </html>
