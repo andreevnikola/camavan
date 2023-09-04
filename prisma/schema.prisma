@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+enum Category {
+  PARENTS
+  CHILDREN
+  GRUICHO
+  TEENS
+  UNKNOWN
+}
+
+model User {
+  id         String   @id
+  first_name String
+  last_name  String
+  email      String   @unique
+  phone      String   @unique
+  isBanned   Boolean  @default(false)
+  image_url  String   @unique
+  category   Category @default(UNKNOWN)
+}
