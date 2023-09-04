@@ -19,6 +19,11 @@ enum Category {
   UNKNOWN
 }
 
+enum Role {
+  CLIENT
+  ADMIN
+}
+
 model User {
   id         String   @id
   first_name String
@@ -28,4 +33,17 @@ model User {
   isBanned   Boolean  @default(false)
   image_url  String   @unique
   category   Category @default(UNKNOWN)
+  hasRole    Role     @default(CLIENT)
+}
+
+model Events {
+  id            String     @id @default(uuid())
+  target_groups Category[] @default([UNKNOWN])
+  title         String
+  description   String
+  markdown      String?
+  image_url     String?
+  starts_at     DateTime
+  ends_at       DateTime?
+  location      String?
 }

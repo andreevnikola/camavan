@@ -1,4 +1,4 @@
-import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
+import { ClerkLoading, ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -6,12 +6,20 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import PageLoading from "./loading";
 import { Suspense } from "react";
+import ReactQueryProvider from "./_trpc/Provider";
+import { Errors } from "@/components/Errors";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Camavan",
   description: "A van for CUM!",
+};
+
+export type Roles = "CLIENT" | "ADMIN" | null;
+export var userRole: Roles = null;
+export const setUserRole = (value: Roles) => {
+  userRole = value;
 };
 
 export default function RootLayout({
@@ -24,8 +32,11 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <Header />
-          <Suspense fallback={<PageLoading />}>{children}</Suspense>
+          <Suspense fallback={<PageLoading />}>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </Suspense>
           <Footer />
+          {/* <Errors /> */}
         </body>
       </html>
     </ClerkProvider>
