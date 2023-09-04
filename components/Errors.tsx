@@ -12,7 +12,7 @@ export const Errors = ({ errors }: { errors: string[] }) => {
       {!!errrorsState[0] &&
         errrorsState.map((error) => {
           return (
-            <div className="bg-red-500 text-white rounded-lg p-2">
+            <div key={error} className="bg-red-500 text-white rounded-lg p-2">
               Възникна грешка! {error}
             </div>
           );
