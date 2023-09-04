@@ -38,7 +38,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   });
 });
 
-const getUserData = t.middleware(async ({ ctx, next }) => {
+const getUserData = isAuthed.unstable_pipe(async ({ ctx, next }) => {
   return next({
     ctx: {
       auth: ctx.auth,
@@ -51,9 +51,21 @@ const getUserData = t.middleware(async ({ ctx, next }) => {
   });
 });
 
+const isAdmin = getUserData.unstable_pipe(async ({ ctx, next }) => {
+  if (ctx.user?.hasRole !== "ADMIN") {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  return next({
+    ctx: {
+      auth: ctx.auth,
+      user: ctx.user,
+    },
+  });
+});
+
 export const router = t.router;
 export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure.use(isAuthed);
-export const authenticatedProcedure = t.procedure
-  .use(isAuthed)
-  .use(getUserData);
+export const authenticatedProcedure = t.procedure.use(getUserData);
+export const adminProcedure = t.procedure.use(isAdmin);
