@@ -23,9 +23,6 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <ClerkLoading>
-            <PageLoading />
-          </ClerkLoading>
           <Header />
           <Suspense fallback={<PageLoading />}>{children}</Suspense>
           <Footer />
