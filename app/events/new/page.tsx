@@ -4,11 +4,13 @@ import { currentUser } from "@clerk/nextjs";
 
 export default async function NewEvent() {
   const clerkUser = await currentUser();
-  const user = await db.user.findUnique({
-    where: {
-      id: clerkUser?.id,
-    },
-  });
+  const user = clerkUser
+    ? await db.user.findUnique({
+        where: {
+          id: clerkUser?.id,
+        },
+      })
+    : undefined;
 
   if (user?.hasRole === "ADMIN") {
     return <CreateNewEvent />;

@@ -19,7 +19,7 @@ const iconOldPoint = new L.Icon({
   iconUrl: "/images/caravan.png",
   iconRetinaUrl: "/images/caravan.png",
   iconSize: new L.Point(27, 20),
-  className: "bg-transparent brightness-75",
+  className: "bg-transparent brightness-50",
   popupAnchor: [2, -40],
 });
 
@@ -197,7 +197,7 @@ export default function HistoryMap({
               />
               <ChangeView coords={center as any} />
               <Routing
-                opacity={0.25}
+                opacity={0.3}
                 lineColor="red"
                 events={events?.filter(
                   (v) => new Date(v.starts_at!).getTime() < new Date().getTime()
