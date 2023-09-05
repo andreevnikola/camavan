@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import PageLoading from "./loading";
 import { Suspense } from "react";
 import ReactQueryProvider from "./_trpc/Provider";
-import { Errors } from "@/components/Errors";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

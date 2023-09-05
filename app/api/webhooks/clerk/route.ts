@@ -38,9 +38,6 @@ const handler = async (req: Request) => {
             email: evt.data.email_addresses.find(
               (mail) => mail.id === (evt!.data as any).primary_email_address_id
             )!.email_address,
-            phone: evt.data.phone_numbers.find(
-              (phone) => phone.id === (evt!.data as any).primary_phone_number_id
-            )!.phone_number,
             image_url: evt.data.image_url,
           },
         });
@@ -56,9 +53,6 @@ const handler = async (req: Request) => {
             email: evt.data.email_addresses.find(
               (mail) => mail.id === (evt!.data as any).primary_email_address_id
             )!.email_address,
-            phone: evt.data.phone_numbers.find(
-              (phone) => phone.id === (evt!.data as any).primary_phone_number_id
-            )!.phone_number,
             image_url: evt.data.image_url,
           },
         });

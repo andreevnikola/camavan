@@ -1,7 +1,4 @@
-import { authMiddleware, currentUser } from "@clerk/nextjs";
-import { db } from "./app/_db/edgePrisma";
-
-import { Roles, userRole, setUserRole } from "./app/layout";
+import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
   publicRoutes: [
