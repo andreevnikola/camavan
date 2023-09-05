@@ -1,0 +1,36 @@
+
+/* Font sizes. */
+$font-size-sm: 0.875rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.5rem;
+$font-size-xl: 1.875rem;
+$font-size-2xl: 3.125rem;
+$font-size-3xl: 6.25rem;
+
+
+/* Line heights. */
+$line-height-sm: 30px;
+$line-height-md: 36px;
+$line-height-lg: 48px;
+
+/* Letter spacings. */
+$letter-spacing-sm: 0.45px;
+$letter-spacing-md: 0.75px;
+$letter-spacing-lg: 1.5px;
+
+/*font weight */
+$fw-thin: 100;
+$fw-extraLight: 200;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+h1{
+    font-size: $font-size-3xl;
+    line-height: 1;
+}
+
+h2{
+    font-size: $font-size-2xl;
+}

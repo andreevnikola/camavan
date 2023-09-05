@@ -1,0 +1,29 @@
+@use "@/scss/abstracts/_variables.scss";
+@use "@/scss/abstracts/_colors.scss";
+@use "@/scss/breakpoints/_breakpoints.scss";
+
+
+
+#map{
+    margin-top: variables.$space-between-sections;
+
+    .map_title{
+        background-color: colors.$red;
+
+        h2{
+            padding-inline: variables.$wrapper;
+            padding-block: 22px; 
+            color: white; //remove it from here
+        }
+    }
+
+    @include breakpoints.media("<=phone"){
+        
+        .map_title{
+            h2{
+                text-align: center;
+                padding: 0;
+            }
+        }
+    }
+}

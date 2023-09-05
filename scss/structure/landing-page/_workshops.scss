@@ -1,0 +1,83 @@
+@use "@/scss/abstracts/_variables.scss";
+@use "@/scss/abstracts/_colors.scss";
+@use "@/scss/breakpoints/_breakpoints.scss";
+
+
+
+#workshops{
+    padding-inline: 250px;
+    padding-top: variables.$space-between-sections;
+
+    .workshops{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 30px;
+
+        &-one-to-three{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+
+            .workshop-item{
+                width: 100%;
+                padding: 60px;
+                background-color: colors.$red;
+                border-radius: 30px;
+
+                .one{
+                    grid-column: 1/2;
+                    grid-row: 1/2;
+                }
+
+                .two{
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+
+                .two{
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                }
+            }
+
+
+        }
+
+        &-fourth{
+            background-color: colors.$red;
+            border-radius: 30px;
+
+            .workshop-item-expanded{
+                grid-column: 2/3;
+                grid-row: 1/4;
+                padding: 30px;
+            }
+        }
+    }
+
+    @include breakpoints.media("<=phone"){
+        padding-inline: 0;
+
+        .workshops{
+            grid-template-columns: 100%;
+
+            &-one-to-three{
+
+                .workshop-item{
+                    width: 80%;
+                    padding: 150px;
+                }
+            }
+
+            &-fourth{
+                .workshop-item-expanded{
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                }
+            }
+        }
+        
+    }
+}
