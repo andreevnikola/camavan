@@ -1,27 +1,63 @@
 import { z } from "zod";
-import { adminProcedure, t } from "./trpc";
+import { adminProcedure, publicProcedure, t } from "./trpc";
 import { db } from "@/app/_db/edgePrisma";
+import { utapi } from "uploadthing/server";
 
 export const eventsRouter = t.router({
   createEvent: adminProcedure
     .input(
       z.object({
-        target_groups: z.array(
-          z.enum(["PARENTS", "CHILDREN", "GRUICHO", "TEENS", "UNKNOWN"])
-        ),
         title: z.string(),
         description: z.string(),
-        markdown: z.null().or(z.string()),
-        image_url: z.null().or(z.string()),
         starts_at: z.string(),
         ends_at: z.null().or(z.string()),
-        location: z.null().or(z.string()),
+        city: z.string(),
+        address: z.string(),
+        coords: z.array(z.number()),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const event = await db.events.create({
         data: {
           ...input,
+        },
+      });
+      return {};
+    }),
+  eventsHistory: publicProcedure.query(async () => {
+    return { events: await db.events.findMany() };
+  }),
+  saveToGallery: adminProcedure
+    .input(z.object({ url: z.string(), id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      await db.events.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          gallery: {
+            push: input.url,
+          },
+        },
+      });
+      return {};
+    }),
+  deleteFromGallery: adminProcedure
+    .input(z.object({ url: z.string(), id: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      await utapi.deleteFiles(input.url.split("|")[1]);
+      const event = await db.events.findUnique({
+        where: { id: input.id },
+        select: { gallery: true },
+      });
+      await db.events.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          gallery: {
+            set: event?.gallery?.filter((x) => x !== input.url),
+          },
         },
       });
       return {};
