@@ -1,0 +1,51 @@
+@use "@/scss/abstracts/_variables.scss";
+@use "@/scss/abstracts/_colors.scss";
+@use "@/scss/breakpoints/_breakpoints.scss";
+
+
+
+
+#about-us{
+    background-color: colors.$yellow;
+    margin-top: variables.$space-between-sections;
+    padding-inline: variables.$wrapper;
+    padding-block: 57px;
+    display: flex;
+    justify-content: space-evenly;
+
+    .about-us-description{
+        padding-right: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 80px;
+        text-align: right;
+
+        p{
+            padding: 20px;
+            width: 50ch;
+            background-color: colors.$beige;
+        }
+
+        .map_directing_button{
+            background-color: colors.$red;
+            color: white;
+            padding: 15px;
+            border-radius: 30px;
+        }
+    }
+
+    @include breakpoints.media("<=phone"){
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding: 80px 0;
+        
+        .about-us-description{
+            align-items: center;
+            padding: 0;
+        }
+    }
+
+}

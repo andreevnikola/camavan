@@ -5,21 +5,23 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import "./Header.css";
+import "./Header.scss";
 import Link from "next/link";
 import Image from "next/image";
 
 export function Header() {
   return (
     <header>
-      <Image className="logo" src="/images/branding/logo.jpg" alt="logo" width={1200} height={1200} />
-      <div className="nav_links">
-        <Link href="#">Home</Link>
-        <Link href="#">Activities</Link>
-        <Link href="#">Events</Link>
-        <Link href="#">Events</Link>
+      <div className="nav_left_links">
+        <Image className="logo" src="/images/logo.jpg" alt="logo" width={1200} height={1200} />
+        <div className="nav_links">
+          <Link className="nav_links_link" href="/">Home</Link>
+          <Link className="nav_links_link" href="#">Activities</Link>
+          <Link className="nav_links_link" href="/workshops">Workshops</Link>
+          <Link className="nav_links_link" href="#">Events</Link>
+        </div>
       </div>
-      <div className="nav_links register_links">
+      <div className="nav_register_links">
         <SignedOut>
           <SignInButton afterSignInUrl="/" afterSignUpUrl="/" mode="modal">
             <a className="btn max-md:text-xs">Sign In</a>
