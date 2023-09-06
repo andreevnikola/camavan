@@ -4,15 +4,15 @@
 
 
 
-#map{
+#map {
     margin-top: variables.$space-between-sections;
 
-    .map_title{
+    .map_title {
         background-color: colors.$red;
 
-        h2{
-            padding-inline: variables.$wrapper;
-            padding-block: 22px; 
+        h2 {
+            // padding-inline: variables.$wrapper;
+            padding-block: 22px;
             color: white; //remove it from here
         }
     }

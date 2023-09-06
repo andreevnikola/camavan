@@ -6,9 +6,10 @@ import "@/scss/structure/landing-page/_map.scss";
 import "@/scss/structure/landing-page/_about-us.scss";
 import "@/scss/structure/landing-page/_workshops.scss";
 import Image from "next/image";
-import ReactDOM from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPerson} from "@fortawesome/free-solid-svg-icons";
+import ReactDOM from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPerson } from "@fortawesome/free-solid-svg-icons";
+import Events from "./events/page";
 
 export default function Home() {
   return (<>
@@ -16,7 +17,7 @@ export default function Home() {
       <section id="hero">
           <img className="hero-image" src="/images/hero.JPG" alt="logo" />
           <div className="hero-title">
-              <h1>Пътувайте през обектива на миналото</h1>
+            <h1>Пътувайте през обектива на миналото</h1>
           </div>
       </section>
       <section id="features">
