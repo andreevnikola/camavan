@@ -66,6 +66,6 @@ export function Header() {
         </div>
       </div>
     </header>
-    <br /><br /><br /></>
+    </>
   );
 }

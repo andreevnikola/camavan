@@ -11,7 +11,7 @@
         background-color: colors.$red;
 
         h2 {
-            // padding-inline: variables.$wrapper;
+            padding-inline: variables.$wrapper;
             padding-block: 22px;
             color: white; //remove it from here
         }
@@ -23,7 +23,7 @@
         .map_title{
             h2{
                 text-align: center;
-                padding: 0;
+                padding: 20px 0;
             }
         }
     }

@@ -12,6 +12,14 @@
         grid-template-columns: 1fr 4fr;
         gap: 32px;
 
+        .work-content-image-holder{
+            background-image: url("/images/camera.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 40px;
+            height: auto;
+        }
+
         .work-content-description-holder{
             padding: 30px;
             display: flex;
