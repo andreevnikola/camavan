@@ -20,6 +20,7 @@ module.exports = {
         secondary: "#838469",
         tertiary: "#4A6369",
         contrasty: "#1c1c1c",
+        whity: "#f7f7ed",
       },
     },
   },
