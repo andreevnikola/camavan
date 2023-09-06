@@ -14,7 +14,7 @@ export default function Home() {
   return (<>
     <main>
       <section id="hero">
-          <Image className="hero_image" src="/images/her.jpg" alt="logo" width={1000} height={800}/>
+          <img className="hero_image" src="/images/hero.JPG" alt="logo" />
           <div className="hero-title">
               <h1>Пътувайте през обектива на миналото</h1>
           </div>
@@ -52,7 +52,7 @@ export default function Home() {
         </div>
       </section>
       <section id="about-us">
-        <Image className="person" src="/images/person.png" alt="person" width={449} height={620} />
+        <Image className="person" src="/images/person.png" alt="person" width={700} height={466} />
         <div className="about-us-description">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.</p>
           <Link className="map_directing_button" href="#">Бутон за скролване</Link>

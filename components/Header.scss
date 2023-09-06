@@ -9,61 +9,135 @@
 }
 
 header{
-    overflow: hidden;
     position: fixed;
     z-index: 1000;
     top: 0;
     width: 100vw;
     background-color: colors.$blue;
     padding-inline: variables.$wrapper;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-
-    .nav_left_links{
+    .desktop-navigation-menu{
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 80px;
-
-        .nav_links{
+        .nav_left_links{
             display: flex;
-            gap: 20px;
-        
-            &_link{
+            align-items: center;
+            gap: 80px;
+    
+            .nav_links{
+                display: flex;
+                gap: 20px;
+            
+                &_link{
+                    cursor: pointer;
+                    background-color: colors.$yellow;
+                    color: white;
+                    font-weight: bold;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                }
+            }
+        }
+    
+        .nav_register_links{
+            display: flex;
+            gap: 30px;
+    
+            .btn{
                 cursor: pointer;
-                background-color: colors.$yellow;
+                background-color: colors.$red;
                 color: white;
                 font-weight: bold;
                 padding: 10px 20px;
                 border-radius: 20px;
+                
             }
         }
     }
 
-    .nav_register_links{
-        display: flex;
-        gap: 50px;
-
-        .btn{
-            cursor: pointer;
-        }
+    .mobile-navigation-menu{
+        display: none;
     }
 
     @include breakpoints.media("<=phone"){
 
         padding: 0;
 
-        .nav_left_links{
-            .nav_links{
-                display: none;
-            }
+        .desktop-navigation-menu{
+            display: none;
         }
 
-        .nav_register_links{
-            display: none;
+        .mobile-navigation-menu{
+            display: flex;
+            padding-inline: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 25px;
+            text-align: right;
+
+            .hamburger-menu{
+                position: relative;
+                display: flex;
+                gap: 7px;
+                flex-direction: column;
+                transition: all 0.3s ease-in-out;
+                z-index: 100;
+                
+                span{
+                    width: 36px;
+                    height: 2px;
+                    background-color: white;
+                    transition: all 300ms ease-in-out;
+                    transform-origin: 5px 1px;
+                }
+        
+                .open{
+                    > span:first-child{
+                        transform: rotate(45deg);
+                    }
+        
+                    > span:nth-child(2){
+                        opacity: 0;
+                    }
+        
+                    > span:last-child{
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+
+            .mobile-nav-links{
+                display: none;
+            }
+
+            .mobile-nav-links-opened {
+                position: absolute;
+                padding: 20px;
+                width: 300px;
+                display: flex !important;
+                flex-direction: column;
+                gap: 20px;
+                background-color: white;
+                top: 100px;
+                right: 40px;
+                border-radius: 40px; //add variable
+
+                .btn{
+                    text-align: right;
+                    margin-bottom: 20px;
+                    font-size: 25px;
+                }
+
+                a:hover{
+                    background-color: rgba(0, 0, 0, 0.403);
+                }
+            }
+
         }
         
     }
+
 }
 

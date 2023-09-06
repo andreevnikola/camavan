@@ -10,7 +10,8 @@ export default authMiddleware({
     "/:locale/sign-up",
     "/api/:rote*",
     "/events",
-    "/workshops"
+    "/workshops",
+    "/workshops/:workshop*"
   ],
   ignoredRoutes: ["/api/webhooks/clerk"],
 });
