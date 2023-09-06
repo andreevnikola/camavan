@@ -14,7 +14,7 @@ export default function Home() {
   return (<>
     <main>
       <section id="hero">
-          <img className="hero_image" src="/images/hero.JPG" alt="logo" />
+          <img className="hero-image" src="/images/hero.JPG" alt="logo" />
           <div className="hero-title">
               <h1>Пътувайте през обектива на миналото</h1>
           </div>
@@ -24,8 +24,7 @@ export default function Home() {
         <div className="features">
           <div className="features_feature">
             <div className="features_feature_title">
-              <FontAwesomeIcon className="features_feature_title_icon" icon={faPerson} width={40} height={40} />
-              <h3>Cool stuff that goes here</h3>
+              <h3>Подвижност</h3>
             </div>
             <div className="features_feature_description">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia in adipisci commodi molestias, distinctio laborum rem consequatur impedit ipsam veritatis accusantium officiis eaque sit porro incidunt recusandae autem voluptates maxime?</p>
@@ -33,8 +32,7 @@ export default function Home() {
           </div>
           <div className="features_feature">
             <div className="features_feature_title">
-              <FontAwesomeIcon className="features_feature_title_icon" icon={faPerson} width={40} height={40} />
-              <h3>Cool stuff that goes here</h3>
+              <h3>Подвижност</h3>
             </div>
             <div className="features_feature_description">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia in adipisci commodi molestias, distinctio laborum rem consequatur impedit ipsam veritatis accusantium officiis eaque sit porro incidunt recusandae autem voluptates maxime?</p>
@@ -42,8 +40,7 @@ export default function Home() {
           </div>
           <div className="features_feature">
             <div className="features_feature_title">
-              <FontAwesomeIcon className="features_feature_title_icon" icon={faPerson} width={40} height={40} />
-              <h3>Cool stuff that goes here</h3>
+              <h3>Подвижонст</h3>
             </div>
             <div className="features_feature_description">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia in adipisci commodi molestias, distinctio laborum rem consequatur impedit ipsam veritatis accusantium officiis eaque sit porro incidunt recusandae autem voluptates maxime?</p>
@@ -52,7 +49,7 @@ export default function Home() {
         </div>
       </section>
       <section id="about-us">
-        <Image className="person" src="/images/person.png" alt="person" width={700} height={466} />
+        <img className="person" src="/images/person.jpg" alt="person"/>
         <div className="about-us-description">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.</p>
           <Link className="map_directing_button" href="#">Бутон за скролване</Link>

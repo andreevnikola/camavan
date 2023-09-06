@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&family=Unbounded:wght@300;600&display=swap');
 
 /* Font sizes. */
 $font-size-sm: 0.875rem;
 $font-size-md: 1.125rem;
-$font-size-lg: 1.5rem;
-$font-size-xl: 1.5rem;
+$font-size-lg: 1.875rem;
+$font-size-xl: 2.5rem;
 $font-size-2xl: 3.125rem;
 $font-size-3xl: 6.25rem;
+
 
 
 /* Line heights. */
@@ -26,8 +28,11 @@ $fw-regular: 400;
 $fw-medium: 500;
 $fw-bold: 700;
 
-h1, h2{
+h1, h2, h3{
     font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Unbounded', sans-serif;
+
 }
 
 h1{

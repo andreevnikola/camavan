@@ -22,20 +22,35 @@
             .workshop-item{
                 width: 100%;
                 padding: 60px;
-                background-color: colors.$red;
                 border-radius: 30px;
 
-                .one{
+                h3{
+                    color: white;
+                }
+
+                &.one{
+                    background-image: url(../../../public/images/workshop-1.jpg);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position-y: 50%;
                     grid-column: 1/2;
                     grid-row: 1/2;
                 }
 
-                .two{
+                &.two{
+                    background-image: url(../../../public/images/workshop-2.jpg);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position-y: 50%;
                     grid-column: 1/2;
                     grid-row: 2/3;
                 }
 
-                .two{
+                &.three{
+                    background-image: url(../../../public/images/workshop-3.png);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position-y: 50%;
                     grid-column: 1/2;
                     grid-row: 3/4;
                 }
@@ -45,8 +60,11 @@
         }
 
         &-fourth{
-            background-color: colors.$red;
+            background-image: url(../../../public/images/workshop-4.jpg);
+            background-size: cover;
             border-radius: 30px;
+            background-repeat: no-repeat;
+            color: white;
 
             .workshop-item-expanded{
                 grid-column: 2/3;
@@ -66,7 +84,10 @@
 
                 .workshop-item{
                     width: 80%;
-                    padding: 150px;
+                    height: 350px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
 
@@ -74,9 +95,12 @@
                 margin: 0 auto;
                 width: 80%;
                 .workshop-item-expanded{
-                    padding: 150px;
+                    height: 350px;
                     grid-column: 1/2;
                     grid-row: 3/4;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
         }

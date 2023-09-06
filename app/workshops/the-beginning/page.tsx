@@ -8,7 +8,7 @@ import "@/scss/structure/workshop-page/workshop-topics/_work.scss";
 export default function TheBeginning() {
     return (<>
         <section id="workshop-topic-hero">
-            <Image className="workshop-topic-hero-image" src="/images/workshop-one-hero.png" alt="workshop-one-hero" width={1440} height={788} />
+            <Image className="workshop-topic-hero-image" src="/images/hero-workshop-1.jpg" alt="workshop-one-hero" width={1440} height={788} />
             <div className="workshop-topic-hero-title">
                 <h1>Зората</h1>
             </div>

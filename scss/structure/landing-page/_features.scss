@@ -26,7 +26,7 @@
             padding: 30px;
             display: flex;
             flex-direction: column;
-            background-color: colors.$beige;
+            background-color: white;
             color: white;
             border-radius: 20px;
             
@@ -35,7 +35,7 @@
                 margin-bottom: 30px;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: center;
                 gap: 15px;
     
                 &_icon{
@@ -47,9 +47,8 @@
                 }
 
                 h3{
-                    background-color: colors.$yellow;
-                    color: white;
                     padding: 20px;
+                    color: colors.$red;
                     border-radius: 20px;
                 }
             }
@@ -68,10 +67,22 @@
 
     
     @include breakpoints.media("<=phone"){
-
+        margin-top: 200px;
         text-align: center;
+
+        h2{
+            font-size: typography.$font-size-xl;
+        }
         .features{
             grid-template-columns: 1fr;
+
+            &_feature{
+                &_title{
+                    h3{
+                        font-size: typography.$font-size-lg;
+                    }
+                }
+            }
         }
     }
 }
