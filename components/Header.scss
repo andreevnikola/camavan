@@ -3,15 +3,15 @@
 @use "@/scss/breakpoints/_breakpoints.scss";
 
 
-.logo{
+.logo {
     width: 80px;
     height: 80px;
 }
 
-header{
+header {
     overflow: hidden;
-    position: fixed;
-    z-index: 1000;
+    position: sticky;
+    z-index: 1000000;
     top: 0;
     width: 100vw;
     background-color: colors.$blue;
@@ -21,16 +21,16 @@ header{
     align-items: center;
 
 
-    .nav_left_links{
+    .nav_left_links {
         display: flex;
         align-items: center;
         gap: 80px;
 
-        .nav_links{
+        .nav_links {
             display: flex;
             gap: 20px;
-        
-            &_link{
+
+            &_link {
                 cursor: pointer;
                 background-color: colors.$yellow;
                 color: white;
@@ -41,29 +41,28 @@ header{
         }
     }
 
-    .nav_register_links{
+    .nav_register_links {
         display: flex;
         gap: 50px;
 
-        .btn{
+        .btn {
             cursor: pointer;
         }
     }
 
-    @include breakpoints.media("<=phone"){
+    @include breakpoints.media("<=phone") {
 
         padding: 0;
 
-        .nav_left_links{
-            .nav_links{
+        .nav_left_links {
+            .nav_links {
                 display: none;
             }
         }
 
-        .nav_register_links{
+        .nav_register_links {
             display: none;
         }
-        
+
     }
 }
-

@@ -3,7 +3,7 @@ import { CreateNewEvent } from "@/components/NewEvent";
 import { currentUser } from "@clerk/nextjs";
 
 export default async function NewEvent() {
-  const clerkUser = await currentUser();
+  const clerkUser = (await currentUser()) || undefined;
   const user = clerkUser
     ? await db.user.findUnique({
         where: {

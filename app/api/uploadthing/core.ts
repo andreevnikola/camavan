@@ -7,14 +7,14 @@ const f = createUploadthing();
 export const camavanRouter = {
   galleryPhotos: f({ image: { maxFileSize: "1MB" } })
     .middleware(async ({ req }) => {
-      const clerkUser = await currentUser();
-      const user = clerkUser
-        ? await db.user.findUnique({
-            where: {
-              id: clerkUser?.id,
-            },
-          })
-        : undefined;
+      const clerkUser = (await currentUser()) || undefined;
+      if (!clerkUser) throw new Error("Unauthorized");
+      const user = await db.user.findUnique({
+        where: {
+          id: clerkUser?.id,
+        },
+      });
+      console.log(user);
       if (user?.hasRole !== "ADMIN") throw new Error("Unauthorized");
       return {};
     })

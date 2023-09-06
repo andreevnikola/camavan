@@ -23,6 +23,14 @@ const iconOldPoint = new L.Icon({
   popupAnchor: [2, -40],
 });
 
+const iconOldPointSelected = new L.Icon({
+  iconUrl: "/images/caravan.png",
+  iconRetinaUrl: "/images/caravan.png",
+  iconSize: new L.Point(45, 32),
+  className: "bg-transparent brightness-50",
+  popupAnchor: [2, -40],
+});
+
 const iconFuturePoint = new L.Icon({
   iconUrl: "/images/caravan.png",
   iconRetinaUrl: "/images/caravan.png",
@@ -30,11 +38,26 @@ const iconFuturePoint = new L.Icon({
   className: "bg-transparent",
   popupAnchor: [2, -40],
 });
+const iconFuturePointSelected = new L.Icon({
+  iconUrl: "/images/caravan.png",
+  iconRetinaUrl: "/images/caravan.png",
+  iconSize: new L.Point(45, 32),
+  className: "bg-transparent",
+  popupAnchor: [2, -40],
+});
 
 const iconPoint = new L.Icon({
   iconUrl: "/images/caravan.png",
   iconRetinaUrl: "/images/caravan.png",
-  iconSize: new L.Point(40, 30),
+  iconSize: new L.Point(27, 20),
+  className: "bg-transparent brightness-150",
+  popupAnchor: [2, -40],
+});
+
+const iconPointSelected = new L.Icon({
+  iconUrl: "/images/caravan.png",
+  iconRetinaUrl: "/images/caravan.png",
+  iconSize: new L.Point(45, 32),
   className: "bg-transparent brightness-150",
   popupAnchor: [2, -40],
 });
@@ -49,6 +72,7 @@ const hiddenIcon = new L.Icon({
 const HistoryPoint = ({
   event = undefined,
   setter = (id: string | null) => {},
+  isSelected = false,
 }: {
   event:
     | {
@@ -63,6 +87,7 @@ const HistoryPoint = ({
       }
     | undefined;
   setter: (id: string | null) => void;
+  isSelected: boolean;
 }) => {
   return (
     <>
@@ -70,7 +95,7 @@ const HistoryPoint = ({
       new Date(event?.ends_at!).getTime() > new Date().getTime() ? (
         <Marker
           position={event!.coords as any}
-          icon={iconPoint}
+          icon={isSelected ? iconPointSelected : iconPoint}
           eventHandlers={{
             click: (e) => {
               setter(event!.id);
@@ -80,7 +105,7 @@ const HistoryPoint = ({
       ) : new Date(event?.starts_at!).getTime() > new Date().getTime() ? (
         <Marker
           position={event!.coords as any}
-          icon={iconFuturePoint}
+          icon={isSelected ? iconFuturePointSelected : iconFuturePoint}
           eventHandlers={{
             click: (e) => {
               setter(event!.id);
@@ -90,7 +115,7 @@ const HistoryPoint = ({
       ) : (
         <Marker
           position={event!.coords as any}
-          icon={iconOldPoint}
+          icon={isSelected ? iconOldPointSelected : iconOldPoint}
           eventHandlers={{
             click: (e) => {
               setter(event!.id);
@@ -204,7 +229,7 @@ export default function HistoryMap({
                 )}
               />
               <Routing
-                opacity={0.75}
+                opacity={0.55}
                 lineColor="blue"
                 events={events?.filter(
                   (v) => new Date(v.ends_at!).getTime() > new Date().getTime()
@@ -215,6 +240,7 @@ export default function HistoryMap({
                   key={event.id}
                   event={event}
                   setter={setSelectedState}
+                  isSelected={selected?.id === event.id}
                 />
               ))}
             </MapContainer>
@@ -226,7 +252,7 @@ export default function HistoryMap({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="p-2 bg-slate-100 shadow-lg"
+            className="p-2 bg-slate-100"
           >
             <EventCard isAdmin={false} event={selected} />
           </motion.div>

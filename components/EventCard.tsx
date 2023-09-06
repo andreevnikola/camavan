@@ -1,10 +1,17 @@
 "use client";
 
-import { faCity, faCalendar, faBook } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCity,
+  faCalendar,
+  faBook,
+  faTrashCan,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { UploadButton } from "./uploadthing";
 import { trpc } from "@/app/_trpc/client";
+import { useMemo, useState } from "react";
+import Image from "next/image";
 
 export const EventCard = ({
   event,
@@ -23,13 +30,35 @@ export const EventCard = ({
   };
   isAdmin: boolean;
 }) => {
+  const [isDeleted, setIsDeleted] = useState(false);
   const requestAddToGallery = trpc.events.saveToGallery.useMutation();
   const requestRemoveFromGallery = trpc.events.deleteFromGallery.useMutation();
+  const requestDeleteEvent = trpc.events.deleteEvent.useMutation();
+  // const state = useMemo(
+  //   () =>
+  //     new Date(event.ends_at!).getTime() > new Date().getTime() &&
+  //     new Date(event.starts_at!).getTime() < new Date().getTime()
+  //       ? "active"
+  //       : new Date(event.ends_at!).getTime() < new Date().getTime()
+  //       ? "past"
+  //       : "future",
+  //   []
+  // );
+  const state =
+    new Date(event.ends_at!).getTime() > new Date().getTime() &&
+    new Date(event.starts_at!).getTime() < new Date().getTime()
+      ? "active"
+      : new Date(event.ends_at!).getTime() < new Date().getTime()
+      ? "past"
+      : "future";
+  if (isDeleted) return <></>;
   return (
     <div
       key={event.id}
       id={event.id}
-      className="bg-base-200 rounded shadow flex-col"
+      className={`rounded shadow flex-col border-2 border-primary bg-base-100 ${
+        state === "past" ? "brightness-[0.85]" : ""
+      }`}
     >
       <div className="w-full p-3 flex justify-between">
         <div className="flex flex-col gap-2 max-sm:gap-0">
@@ -40,7 +69,27 @@ export const EventCard = ({
               className="m-1 max-sm:w-11"
             />
             <div className="flex flex-col justify-center min-w-fit h-full max-w-fit">
-              <p className="w-fit text-xl font-bold leading-4">{event.city}</p>
+              <span className="flex gap-2">
+                {" "}
+                <p className="w-fit text-xl font-bold leading-4">
+                  {event.city}{" "}
+                </p>
+                <Image
+                  width={30}
+                  height={15}
+                  src={`/images/caravan.png`}
+                  alt="caravan"
+                  style={{
+                    filter: `brightness(${
+                      state === "active"
+                        ? "1.50"
+                        : state === "past"
+                        ? "0.75"
+                        : "1"
+                    })`,
+                  }}
+                />
+              </span>
               <p className="w-fit">{event.address}</p>
             </div>
           </div>
@@ -67,28 +116,45 @@ export const EventCard = ({
         </div>
         <div className="flex gap-2">
           {isAdmin && (
-            <div className="flex cursor-pointer flex-col p-2 bg-base-100 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5">
-              <UploadButton
-                endpoint="galleryPhotos"
-                onClientUploadComplete={(res) => {
-                  requestAddToGallery.mutate({
+            <>
+              <div className="flex cursor-pointer flex-col p-2 bg-base-50 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5">
+                <UploadButton
+                  endpoint="galleryPhotos"
+                  onClientUploadComplete={async (res: any) => {
+                    event.gallery!.push(res![0].url + "|" + res![0].key);
+                    await requestAddToGallery.mutateAsync({
+                      id: event.id,
+                      url: res![0].url + "|" + res![0].key,
+                    });
+                  }}
+                  onUploadError={(error: Error) => {
+                    // Do something with the error.
+                    alert(`ERROR! ${error.message}`);
+                  }}
+                />
+                <p className="w-fit text-xs text-center max-sm:text-[0.6rem]">
+                  Добави в галерия
+                </p>
+              </div>
+              <a
+                onClick={async () => {
+                  const deleted = await requestDeleteEvent.mutateAsync({
                     id: event.id,
-                    url: res![0].url + "|" + res![0].key,
                   });
+                  setIsDeleted(true);
                 }}
-                onUploadError={(error: Error) => {
-                  // Do something with the error.
-                  alert(`ERROR! ${error.message}`);
-                }}
-              />
-              <p className="w-fit text-xs text-center max-sm:text-[0.6rem]">
-                Добави в галерия
-              </p>
-            </div>
+                className="flex cursor-pointer flex-col p-2 bg-base-50 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
+              >
+                <FontAwesomeIcon size="2x" icon={faTrashCan} />
+                <p className="w-fit text-xs text-center max-sm:text-[0.6rem]">
+                  Изтрий
+                </p>
+              </a>
+            </>
           )}
           <Link
-            href={`/book`}
-            className="flex cursor-pointer flex-col p-2 bg-base-100 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
+            href={state !== "past" ? `/book` : ""}
+            className="flex cursor-pointer flex-col p-2 bg-base-50 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
           >
             <FontAwesomeIcon size="2x" icon={faBook} />
             <p className="w-fit text-xs text-center max-sm:text-[0.6rem]">
@@ -100,23 +166,26 @@ export const EventCard = ({
       <div className="flex flex-col p-3 border-t">
         <h1 className="text-center text-lg font-bold">{event.title}</h1>
         <p className="text-contrasty">{event.description}</p>
-        <div className="flex gap-2 w-full overflow-auto max-h-52">
+        <div className="flex gap-2 max-w-full overflow-auto">
           {event.gallery.map((img) => (
-            <div className="relative" key={img}>
+            <div
+              className="relative w-auto float-left h-52 flex shrink-0 grow-0"
+              key={img}
+            >
               <img
                 src={img.split("|")[0]}
                 alt="gallery image"
-                className="w-auto h-full"
+                className="h-full w-auto"
               />
               {isAdmin && (
                 <button
                   className="bg-red-500 text-white rounded p-1 absolute top-1 left-1"
-                  onClick={() => {
-                    requestRemoveFromGallery.mutate({
+                  onClick={async () => {
+                    event.gallery.splice(event.gallery.indexOf(img));
+                    await requestRemoveFromGallery.mutateAsync({
                       id: event.id,
                       url: img,
                     });
-                    requestAddToGallery.reset();
                   }}
                 >
                   Remove

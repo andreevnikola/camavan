@@ -24,6 +24,20 @@ export const eventsRouter = t.router({
       });
       return {};
     }),
+  deleteEvent: adminProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const event = await db.events.delete({
+        where: {
+          id: input.id,
+        },
+      });
+      return {};
+    }),
   eventsHistory: publicProcedure.query(async () => {
     return { events: await db.events.findMany() };
   }),
