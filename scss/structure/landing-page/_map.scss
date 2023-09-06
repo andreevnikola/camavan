@@ -17,11 +17,11 @@
         }
     }
 
-    @include breakpoints.media("<=phone"){
-        
+    @include breakpoints.media("<=phone") {
+
         margin-top: 300px;
-        .map_title{
-            h2{
+        .map_title {
+            h2 {
                 text-align: center;
                 padding: 0;
             }

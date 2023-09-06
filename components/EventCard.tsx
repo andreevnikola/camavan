@@ -56,7 +56,7 @@ export const EventCard = ({
     <div
       key={event.id}
       id={event.id}
-      className={`rounded-lg shadow flex-col bg-base-200 text-white ${
+      className={`rounded shadow flex-col border-2 border-primary bg-base-100 ${
         state === "past" ? "brightness-[0.85]" : ""
       }`}
     >
@@ -117,7 +117,7 @@ export const EventCard = ({
         <div className="flex gap-2">
           {isAdmin && (
             <>
-              <div className="flex cursor-pointer flex-col p-2 bg-primary justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5">
+              <div className="flex cursor-pointer flex-col p-2 bg-base-50 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5">
                 <UploadButton
                   endpoint="galleryPhotos"
                   onClientUploadComplete={async (res: any) => {
@@ -143,7 +143,7 @@ export const EventCard = ({
                   });
                   setIsDeleted(true);
                 }}
-                className="flex cursor-pointer flex-col p-2 bg-primary justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
+                className="flex cursor-pointer flex-col p-2 bg-base-50 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
               >
                 <FontAwesomeIcon size="2x" icon={faTrashCan} />
                 <p className="w-fit text-xs text-center max-sm:text-[0.6rem]">
@@ -153,8 +153,8 @@ export const EventCard = ({
             </>
           )}
           <Link
-            href={state !== "past" ? `/book/${event.id}` : ""}
-            className="flex cursor-pointer flex-col p-2 bg-primary justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
+            href={state !== "past" ? `/book` : ""}
+            className="flex cursor-pointer flex-col p-2 bg-base-50 justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
           >
             <FontAwesomeIcon size="2x" icon={faBook} />
             <p className="w-fit text-xs text-center max-sm:text-[0.6rem]">
@@ -163,38 +163,34 @@ export const EventCard = ({
           </Link>
         </div>
       </div>
-      <div className="flex flex-col p-5 border-t">
-        <div className="rounded-lg bg-base-100 p-3 text-black">
-          <h1 className="text-center text-2xl font-bold">{event.title}</h1>
-          <p className="text-contrasty">{event.description}</p>
-          {event.gallery.length > 0 && (
-            <div className="flex gap-2 mt-5 max-w-full overflow-auto">
-              {event.gallery.map((img) => (
-                <div
-                  className="relative w-auto float-left h-52 flex shrink-0 grow-0"
-                  key={img}
+      <div className="flex flex-col p-3 border-t">
+        <h1 className="text-center text-lg font-bold">{event.title}</h1>
+        <p className="text-contrasty">{event.description}</p>
+        <div className="flex gap-2 max-w-full overflow-auto">
+          {event.gallery.map((img) => (
+            <div
+              className="relative w-auto float-left h-52 flex shrink-0 grow-0"
+              key={img}
+            >
+              <img
+                src={img.split("|")[0]}
+                alt="gallery image"
+                className="h-full w-auto"
+              />
+              {isAdmin && (
+                <button
+                  className="bg-red-500 text-white rounded p-1 absolute top-1 left-1"
+                  onClick={async () => {
+                    event.gallery.splice(event.gallery.indexOf(img));
+                    await requestRemoveFromGallery.mutateAsync({
+                      id: event.id,
+                      url: img,
+                    });
+                  }}
                 >
-                  <img
-                    src={img.split("|")[0]}
-                    alt="gallery image"
-                    className="h-full w-auto"
-                  />
-                  {isAdmin && (
-                    <button
-                      className="bg-red-500 text-white rounded p-1 absolute top-1 left-1"
-                      onClick={async () => {
-                        event.gallery.splice(event.gallery.indexOf(img));
-                        await requestRemoveFromGallery.mutateAsync({
-                          id: event.id,
-                          url: img,
-                        });
-                      }}
-                    >
-                      Remove
-                    </button>
-                  )}
-                </div>
-              ))}
+                  Remove
+                </button>
+              )}
             </div>
           )}
         </div>
