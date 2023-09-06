@@ -15,7 +15,7 @@ import Image from "next/image";
 
 export const EventCard = ({
   event,
-  isAdmin,
+  isAdmin = false,
 }: {
   event: {
     id: string;
@@ -28,7 +28,7 @@ export const EventCard = ({
     coords: number[];
     gallery: string[];
   };
-  isAdmin: boolean;
+  isAdmin?: boolean;
 }) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const requestAddToGallery = trpc.events.saveToGallery.useMutation();
@@ -153,7 +153,7 @@ export const EventCard = ({
             </>
           )}
           <Link
-            href={state !== "past" ? `/book` : ""}
+            href={state !== "past" ? `/book/${event.id}` : ""}
             className="flex cursor-pointer flex-col p-2 bg-primary justify-center gap-3 max-h-fit rounded active:brightness-125 max-sm:p-0.5"
           >
             <FontAwesomeIcon size="2x" icon={faBook} />

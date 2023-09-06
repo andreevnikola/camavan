@@ -76,4 +76,17 @@ export const eventsRouter = t.router({
       });
       return {};
     }),
+  getEvent: publicProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return {
+        event: await db.events.findUnique({
+          where: { id: input.id },
+        }),
+      };
+    }),
 });
