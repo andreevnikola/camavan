@@ -9,7 +9,7 @@ export default function PageLoading() {
           height={500}
           width={512}
           className="w-full max-w-[100px] relative inline-flex animate-bounce m-5"
-          src="/images/icon.png"
+          src="/images/branding/icon.png"
           alt="Camavan"
         />
       </span>

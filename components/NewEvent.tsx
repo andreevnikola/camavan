@@ -1,47 +1,35 @@
 "use client";
 import { trpc } from "@/app/_trpc/client";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import PageLoading from "@/app/loading";
 import { Errors } from "./Errors";
-import { redirect } from "next/navigation";
-import dynamic from "next/dynamic";
-const MapWithNoSSR = dynamic(() => import("./MapForAddEvents"), {
-  ssr: false,
-});
 
 export const CreateNewEvent = () => {
+  const [md, setMd] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [address, setAdress] = useState("");
-  const [city, setCity] = useState("");
+  const [locaion, setLocaion] = useState("");
   const [startsAt, setStartsAt] = useState("");
   const [endsAt, setEndsAt] = useState("");
 
-  const [pinPoint, setPinPoint] = useState<[number, number]>([0, 0]);
-
-  const setPinpointFromMarkerToNewEvent = (coords: [number, number]) => {
-    setPinPoint(coords);
-  };
+  // const [errors, setErrors] = useAtom(errorsAtom);
+  // setErrors(["NIGGA", "NIGGA 2"]);
 
   const requestDelivery = trpc.events.createEvent.useMutation();
-
   const saveEvent = (event: FormEvent) => {
     event.preventDefault();
-
     requestDelivery.mutate({
       description: description,
-      ends_at: new Date(endsAt)?.toISOString(),
-      starts_at: new Date(startsAt)?.toISOString(),
-      city: city,
-      address: address,
+      ends_at: new Date(endsAt).toISOString(),
+      starts_at: new Date(startsAt).toISOString(),
+      image_url: null,
+      location: locaion,
+      markdown: md,
+      target_groups: ["CHILDREN"],
       title: title,
-      coords: pinPoint,
     });
   };
-
-  if (requestDelivery.isSuccess) {
-    redirect("/events");
-  }
 
   return (
     <>
@@ -57,53 +45,50 @@ export const CreateNewEvent = () => {
               placeholder="Въведе заглавиe на събитието"
               name="title"
               value={title}
-              className="w-full"
               onChange={(e) => setTitle(e.target.value)}
             />
-            <textarea
+            <input
+              type="text"
               placeholder="Въведе описание на събитието"
-              className="w-full"
               name="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            <input
+              type="text"
+              placeholder="MarkDown контент свързан със страницата"
+              name="markdown"
+              value={md}
+              onChange={(e) => setMd(e.target.value)}
+            />
+            <ReactMarkdown>{md}</ReactMarkdown>
             <div>
               <label htmlFor="starts_at">Започва от: </label>
               <input
                 id="starts_at"
-                type="date"
+                type="datetime-local"
                 name="starts_at"
                 value={startsAt}
                 onChange={(e) => setStartsAt(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="ends_at">Завършва на: </label>
+              <label htmlFor="ends_at">Започва от: </label>
               <input
                 id="ends_at"
-                type="date"
+                type="datetime-local"
                 name="ends_at"
                 value={endsAt}
                 onChange={(e) => setEndsAt(e.target.value)}
               />
             </div>
             <input
+              placeholder="локация на събитието"
               type="text"
-              className="w-full"
-              placeholder="Град: "
-              name="city"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
+              name="location"
+              value={locaion}
+              onChange={(e) => setLocaion(e.target.value)}
             />
-            <input
-              placeholder="Адрес на събитието"
-              className="w-full"
-              type="text"
-              name="address"
-              value={address}
-              onChange={(e) => setAdress(e.target.value)}
-            />
-            <MapWithNoSSR setter={setPinpointFromMarkerToNewEvent} />
             <button className="w-full bg-primary">СЪЗДАЙ</button>
           </div>
           {requestDelivery.isLoading && <PageLoading />}

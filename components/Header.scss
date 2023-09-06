@@ -3,21 +3,20 @@
 @use "@/scss/breakpoints/_breakpoints.scss";
 
 
-.logo {
+.logo{
     width: 80px;
     height: 80px;
 }
 
-header {
-    overflow: hidden;
-    position: sticky;
-    z-index: 10000;
+header{
+    position: fixed;
+    z-index: 1000;
     top: 0;
     width: 100vw;
     background-color: colors.$blue;
     padding-inline: variables.$wrapper;
 
-    .nav_left_links {
+    .desktop-navigation-menu{
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -46,14 +45,6 @@ header {
             gap: 30px;
     
             .btn{
-
-        gap: 80px;
-
-        .nav_links {
-            display: flex;
-            gap: 20px;
-
-            &_link {
                 cursor: pointer;
                 background-color: colors.$red;
                 color: white;
@@ -65,17 +56,11 @@ header {
         }
     }
 
-
-    .nav_register_links {
-        display: flex;
-        gap: 50px;
-
-        .btn {
-            cursor: pointer;
-        }
+    .mobile-navigation-menu{
+        display: none;
     }
 
-    @include breakpoints.media("<=phone") {
+    @include breakpoints.media("<=phone"){
 
         padding: 0;
 
@@ -124,8 +109,6 @@ header {
             }
 
             .mobile-nav-links{
-        .nav_left_links {
-            .nav_links {
                 display: none;
             }
 
@@ -157,9 +140,4 @@ header {
     }
 
 }
-        .nav_register_links {
-            display: none;
-        }
 
-    }
-}
