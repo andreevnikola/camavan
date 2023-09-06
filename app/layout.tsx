@@ -7,8 +7,7 @@ import { Footer } from "@/components/Footer";
 import PageLoading from "./loading";
 import { Suspense } from "react";
 import ReactQueryProvider from "./_trpc/Provider";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-import { neobrutalism } from "@clerk/themes";
+import { Errors } from "@/components/Errors";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,11 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: neobrutalism,
-      }}
-    >
+    <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
           <Header />

@@ -4,21 +4,21 @@
 
 
 
-#map {
+#map{
     margin-top: variables.$space-between-sections;
 
-    .map_title {
+    .map_title{
         background-color: colors.$red;
 
-        h2 {
-            // padding-inline: variables.$wrapper;
+        h2{
+            padding-inline: variables.$wrapper;
             padding-block: 22px;
             color: white; //remove it from here
         }
     }
 
     @include breakpoints.media("<=phone"){
-        
+
         margin-top: 300px;
         .map_title{
             h2{
