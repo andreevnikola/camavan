@@ -8,16 +8,20 @@ export default function Workshops() {
             <h1>Нашите работилници</h1>
             <div className="workshop-page-content">
                 <div className="workshop-page-content-item width-extended">
-                    <Link className="book-workshop" href="#">zapishi se/ si chas</Link>
+                    <h2>Зората на фотографията</h2>
+                    <Link className="visit" href="/workshops/the-beginning">Разгледай</Link>
                 </div>
                 <div className="workshop-page-content-item width-normal-1">
-                    <Link className="book-workshop" href="#">zapishi se/ si chas</Link>
+                    <h2>Начало на революцията</h2>
+                    <Link className="visit" href="/workshops/the-revolution">Разгледай</Link>
                 </div>
                 <div className="workshop-page-content-item width-normal-2">
-                    <Link className="book-workshop" href="#">zapishi se/ si chas</Link>
+                    <h2>Краят на революцията</h2>
+                    <Link className="visit" href="/workshops/the-end-of-revolution">Разгледай</Link>
                 </div>
                 <div className="workshop-page-content-item heigh-extended">
-                    <Link className="book-workshop" href="#">zapishi se/ si chas</Link>
+                    <h2>Семейна работилница</h2>
+                    <Link className="visit" href="/workshops/family-workshop">Разгледай</Link>
                 </div>
             </div>
         </section>

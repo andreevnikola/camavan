@@ -1,0 +1,24 @@
+@use "@/scss/abstracts/_variables.scss";
+@use "@/scss/abstracts/_colors.scss";
+@use "@/scss/abstracts/_typography.scss";
+@use "@/scss/breakpoints/_breakpoints.scss";
+
+#introduction-to-topic{
+    margin-top: variables.$space-between-sections;
+    padding-inline: variables.$wrapper;
+    
+    p{
+        margin-top: 30px;
+        font-size: 30px;
+        width: 70ch;
+    }
+
+    @include breakpoints.media("<=phone"){
+
+        p{
+            text-align: justify;
+            width: 90%;
+            font-size: 18px;
+        }
+    }
+}

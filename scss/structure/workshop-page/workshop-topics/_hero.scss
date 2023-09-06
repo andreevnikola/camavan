@@ -1,0 +1,57 @@
+@use "@/scss/abstracts/_variables.scss";
+@use "@/scss/abstracts/_colors.scss";
+@use "@/scss/abstracts/_typography.scss";
+@use "@/scss/breakpoints/_breakpoints.scss";
+
+#workshop-topic-hero{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: -80px; //remove it when merged
+
+    .workshop-topic-hero-image{
+        width: 100%;
+        height: 100%;
+    }
+
+    .workshop-topic-hero-title{
+        width: 906px;
+        position: absolute;
+        top: calc(50% - 80px);
+        left: calc(50% - 453px);
+        padding: 20px 80px;
+        background-color: colors.$blue;
+        color: white;
+        text-align: center;
+        border-radius: 40px;
+    }
+
+    .book-button{
+        position: absolute;
+        bottom: 10%;
+        right: 10%;
+        background-color: colors.$red;
+        color: white;
+        border-radius: 40px;
+        padding: 20px 30px;
+        font-size: 20px ;
+    }
+
+    @include breakpoints.media("<=phone"){
+        .workshop-topic-hero-title{
+            width: 300px;
+            padding-inline: 40px;
+            top: 50%;
+            left: calc(50% - 150px);
+
+            h1{
+                font-size: typography.$font-size-2xl;
+            }
+        }
+
+        .book-button{
+            right: 5%;
+            bottom: -15%;
+        }
+    }
+}
