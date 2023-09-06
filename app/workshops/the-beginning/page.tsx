@@ -23,7 +23,6 @@ export default function TheBeginning() {
         <section id="work">
             <div className="work-content">
                 <div className="work-content-image-holder">
-                    <Image className="camera" src="/images/camera.png" alt="person" width={404} height={466} />
                 </div>
                 <div className="work-content-description-holder">
                     <h3>Допир</h3>
