@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&family=Unbounded:wght@300;600&display=swap');
 
 /* Font sizes. */
-$font-size-sm: 0.875rem;
+$font-size-sm: 1.125rem;
 $font-size-md: 1.125rem;
 $font-size-lg: 1.875rem;
 $font-size-xl: 2.5rem;
@@ -50,5 +50,9 @@ h3{
 
 h4{
     font-size: $font-size-xl;
+}
+
+p{
+    font-size: $font-size-sm;
 }
 

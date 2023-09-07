@@ -29,9 +29,13 @@
 
     @include breakpoints.media("<=phone"){
         padding: 0;
-        height: 30vh;
+        height: 40vh;
         flex-direction: column;
         gap: 50px;
+
+        .hero-image{
+            height: 100%;
+        }
 
         .hero-title{
             top: 15%;
