@@ -4,7 +4,16 @@ import {
   SignedOutAuthObject,
   getAuth,
 } from "@clerk/nextjs/server";
+import nodemailer from "nodemailer";
 import { TRPCError, inferAsyncReturnType, initTRPC } from "@trpc/server";
+
+export const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "camavanphoto@gmail.com",
+    pass: process.env.MAIL_PASSWORD,
+  },
+});
 
 interface AuthContext {
   auth: SignedInAuthObject | SignedOutAuthObject;

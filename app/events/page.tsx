@@ -43,7 +43,7 @@ export default async function Events() {
     <div className="w-full flex justify-center">
       <div className="w-full max-w-4xl p-5 flex flex-col gap-3">
         <MapWithNoSSR />
-        {activeEvents ? (
+        {activeEvents.length > 0 ? (
           <>
             <h1 className="font-bold text-2xl">Актвни събития</h1>
             {activeEvents.map((event: any) => (
@@ -57,7 +57,7 @@ export default async function Events() {
         ) : (
           <></>
         )}
-        {futureEvents ? (
+        {futureEvents.length > 0 ? (
           <>
             <hr />
             <br />
@@ -73,7 +73,7 @@ export default async function Events() {
         ) : (
           <></>
         )}
-        {pastEvents ? (
+        {pastEvents.length > 0 ? (
           <>
             <hr />
             <br />
