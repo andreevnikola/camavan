@@ -37,4 +37,35 @@ model Events {
   city        String    @default("")
   coords      Int[]     @default([0, 0])
   gallery     String[]  @default([])
+  tickets     Tickets[]
+}
+
+enum TicketType {
+  ADULT
+  CHILD
+}
+
+enum Workshops {
+  ZORATA
+  THE_REVOLUTION
+  LATE
+  FAMILY
+}
+
+enum PaymentMehods {
+  CASH
+  STRIPE
+}
+
+model Tickets {
+  id            String        @id @default(uuid())
+  type          TicketType    @default(ADULT)
+  eventId       String
+  event         Events        @relation(fields: [eventId], references: [id])
+  workshop      Workshops     @default(FAMILY)
+  isPaid        Boolean       @default(false)
+  paymentMethod PaymentMehods @default(CASH)
+  userId        String
+  price         Int
+  isUsed        Boolean       @default(false)
 }
