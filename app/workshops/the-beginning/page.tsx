@@ -7,10 +7,10 @@ import "@/scss/structure/workshop-page/workshop-topics/_work.scss";
 
 export default function TheBeginning() {
     return (<>
-        <section id="workshop-topic-hero">
+                <section id="workshop-topic-hero">
             <Image className="workshop-topic-hero-image" src="/images/hero-workshop-1.jpg" alt="workshop-one-hero" width={1440} height={788} />
             <div className="workshop-topic-hero-title">
-                <h1>Зората</h1>
+                <h1>Начало на революцията</h1>
             </div>
             <div className="book-button">
                 <Link  href="#">Резервирай билет</Link>  
@@ -22,8 +22,7 @@ export default function TheBeginning() {
         </section>
         <section id="work">
             <div className="work-content">
-                <div className="work-content-image-holder">
-                </div>
+                <img className="work-content-image-holder" src="/images/camera.jpg" alt="" />
                 <div className="work-content-description-holder">
                     <h3>Допир</h3>
                     <p>Удивително е да видиш развитието на фотоапаратите и да ги докоснеш със собствените си ръце: да знаеш, наистина колко ценна е една снимка</p>
@@ -34,11 +33,8 @@ export default function TheBeginning() {
                     <h3>Практически задачи</h3>
                     <p>Най-удивителното е, че можеш да снимаш с тях! Да се върнеш години назад само като погледнеш през обектива.</p>
                 </div>
-                <div className="work-content-image-holder">
-                    <Image className="camera" src="/images/camera.png" alt="person" width={404} height={466} />
-                </div>
+                <img className="work-content-image-holder" src="/images/camera.jpg" alt="" />
             </div>
         </section>
-
     </>);
 }

@@ -21,4 +21,29 @@
             font-size: 18px;
         }
     }
+
+    @include breakpoints.media(">phone", "<=tablet"){
+        p{
+            text-align: justify;
+            width: 90%;
+            font-size: 18px;
+        }
+    }
+
+    @include breakpoints.media(">tablet", "<=desktop"){
+        p{
+            text-align: justify;
+            width: 90%;
+            font-size: typography.$font-size-lg;
+        }
+    }
+
+    @include breakpoints.media(">desktop", "<=LGdesktop"){
+        p{
+            text-align: justify;
+            width: 90%;
+            font-size: typography.$font-size-lg;
+        }
+    }
+
 }
