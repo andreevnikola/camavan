@@ -65,30 +65,30 @@ export default function Home() {
             </div>
           </div>
         </section>
-      <section id="about-us">
-        <img className="person" src="/images/person-transperent.png" alt="person"/>
-        <div className="about-us-description">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.</p>
-          <Link className="map_directing_button" href="#">Бутон за скролване</Link>
-        </div>
-      </section>
-      <section id="map">
-        <div className="map_title">
-          <h2>Маршрута на караваната</h2>
-        </div>
-      </section>
-      <section id="workshops">
-        <div className="workshops">
-          <div className="workshops-one-to-three">
-            <div className="workshop-item one">
-              <h3>workshop 1</h3>
-            </div>
-            <div className="workshop-item two">
-              <h3>workshop 1</h3>
-            </div>
-            <div className="workshop-item three">
-              <h3>workshop 1</h3>
-            </div>
+        <section id="about-us">
+          <img
+            className="person"
+            src="/images/person-transperent.png"
+            alt="person"
+          />
+          <div className="about-us-description">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+              esse illum unde libero reprehenderit officia id ipsum, voluptatem
+              rerum. At excepturi enim nesciunt praesentium debitis vitae
+              asperiores corporis saepe voluptatem.orem ipsum dolor sit amet
+              consectetur adipisicing elit. Aperiam esse illum unde libero
+              reprehenderit officia id ipsum, voluptatem rerum. At excepturi
+              enim nesciunt praesentium debitis vitae asperiores corporis saepe
+              voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit.
+              Aperiam esse illum unde libero reprehenderit officia id ipsum,
+              voluptatem rerum. At excepturi enim nesciunt praesentium debitis
+              vitae asperiores corporis saepe voluptatem.
+            </p>
+            <Link className="map_directing_button" href="#">
+              Бутон за скролване
+            </Link>
+          </div>
         </section>
         <section id="map">
           <div className="map_title">
