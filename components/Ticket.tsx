@@ -54,7 +54,7 @@ export const Ticket = ({
   const user = trpc.user.readUser.useQuery();
   const updateTicketRequest = trpc.tickets.validateTicket.useMutation();
 
-  console.log(ticket.isUsed);
+  console.log(`${process.env.NEXT_PUBLIC_APP_URL}/tickets/${ticket.id}`);
 
   return (
     <div
