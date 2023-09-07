@@ -10,7 +10,7 @@
 
     .workshops{
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 1fr 1fr;
         gap: 30px;
 
         &-one-to-three{
@@ -92,6 +92,104 @@
             }
 
             &-fourth{
+                margin: 0 auto;
+                width: 80%;
+                .workshop-item-expanded{
+                    height: 350px;
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+        
+    }
+
+    @include breakpoints.media(">phone", "<=tablet"){
+        padding-inline: 0;
+
+        .workshops{
+            grid-template-columns: 100%;
+
+            &-one-to-three{
+
+                .workshop-item{
+                    width: 80%;
+                    height: 350px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            &-fourth{
+                margin: 0 auto;
+                width: 80%;
+                .workshop-item-expanded{
+                    height: 350px;
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+        
+    }
+
+    @include breakpoints.media(">tablet", "<=desktop"){
+        padding-inline: 0px;
+
+        .workshops{
+            grid-template-columns: 100%;
+
+            &-one-to-three{
+
+                .workshop-item{
+                    width: 80%;
+                    height: 350px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            &-fourth{
+                background-position-y: 30%;
+                margin: 0 auto;
+                width: 80%;
+                .workshop-item-expanded{
+                    height: 350px;
+                    grid-column: 1/2;
+                    grid-row: 3/4;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+        
+    }
+
+    @include breakpoints.media(">desktop", "<=LGdesktop"){
+        padding-inline: 80px;
+
+        .workshops{
+            margin: 0 auto;
+            &-one-to-three{
+
+                .workshop-item{
+                    width: 100%;
+                    padding: 60px;
+                    border-radius: 30px;
+                }
+            }
+
+            &-fourth{
+                background-position-y: 30%;
                 margin: 0 auto;
                 width: 80%;
                 .workshop-item-expanded{
