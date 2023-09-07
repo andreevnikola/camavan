@@ -136,7 +136,7 @@ export const Ticket = ({
                   <p className="text-center max-sm:text-sm text-md">
                     {ticket.paymentMethod === "CASH"
                       ? "Платеж на място"
-                      : "Плащане с:"}
+                      : "Онлайн плащане"}
                   </p>
                 </hgroup>
               </div>

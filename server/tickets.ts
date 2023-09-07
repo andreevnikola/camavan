@@ -11,6 +11,7 @@ export const ticketsRouter = t.router({
         workshop: z.enum(["ZORATA", "THE_REVOLUTION", "LATE", "FAMILY"]),
         childTickets: z.number(),
         adultTickets: z.number(),
+        paymentMethod: z.enum(["STRIPE", "CASH"]),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -21,7 +22,7 @@ export const ticketsRouter = t.router({
           workshop: input.workshop,
           type: "CHILD" as TicketType,
           userId: ctx.user?.id || "",
-          price: 12,
+          price: 20,
         });
       }
       let adultTicketsInputData = [];
@@ -31,7 +32,7 @@ export const ticketsRouter = t.router({
           workshop: input.workshop,
           type: "ADULT" as TicketType,
           userId: ctx.user?.id || "",
-          price: 18,
+          price: 40,
         });
       }
       const ticketsChildren = childrenTicketsInputData

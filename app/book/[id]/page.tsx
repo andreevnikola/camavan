@@ -9,9 +9,20 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Workshops from "@/app/workshops/page";
+import PaymentForm from "@/components/PaymentForm";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
 
 export default function Book() {
+  const options = {
+    // passing the client secret obtained from the server
+    clientSecret: "{{CLIENT_SECRET}}",
+  };
+
   const params = useParams();
   const router = useRouter();
   const getEventQuery = trpc.events.getEvent.useQuery({
@@ -22,8 +33,9 @@ export default function Book() {
   const [workshop, setWorkshop] = useState<string>("ZORATA");
   const [numberChildTickets, setNumberChildTickets] = useState<number>(0);
   const [numberAdultTickets, setNumberAdultTickets] = useState<number>(0);
+  const [isPaidWithCard, setIsPaidWithCard] = useState<boolean>(false);
 
-  const price = numberChildTickets * 12 + numberAdultTickets * 18;
+  const price = numberChildTickets * 20 + numberAdultTickets * 40;
 
   if (getEventQuery.isLoading) return <PageLoading />;
 
@@ -34,6 +46,7 @@ export default function Book() {
       workshop: workshop as any,
       childTickets: numberChildTickets,
       adultTickets: numberAdultTickets,
+      paymentMethod: isPaidWithCard ? "STRIPE" : "CASH",
     });
     router.push("/tickets");
   };
@@ -56,7 +69,7 @@ export default function Book() {
             <EventCard event={getEventQuery.data?.event as any} />
             <Link
               href="/events"
-              className="w-full p-5 text-center bg-base-200 rounded-lg text-whity font-bold text-xl"
+              className="hover:brightness-125 transition-all w-full p-5 text-center bg-base-200 rounded-lg text-whity font-bold text-xl"
             >
               Избери друго
             </Link>
@@ -85,7 +98,7 @@ export default function Book() {
             </div>
             <Link
               href="/workshops"
-              className="w-full p-5 text-center bg-base-200 rounded-lg text-whity font-bold text-xl"
+              className="hover:brightness-125 transition-all w-full p-5 text-center bg-base-200 rounded-lg text-whity font-bold text-xl"
             >
               Виж работилници
             </Link>
@@ -116,7 +129,7 @@ export default function Book() {
                         className="w-full max-sm:h-9 bg-whity rounded text-primary border-primary border-2 p-2 font-bold"
                       />
                       <p className="w-fit float-right whitespace-nowrap text-2xl">
-                        x <strong>12лв</strong>
+                        x <strong>20лв</strong>
                       </p>
                     </div>
                   </span>
@@ -136,7 +149,7 @@ export default function Book() {
                         className="w-full bg-whity rounded text-primary border-primary border-2 p-2 max-sm:h-9 font-bold"
                       />
                       <p className="w-fit float-right whitespace-nowrap text-2xl">
-                        x <strong>18лв</strong>
+                        x <strong>40лв</strong>
                       </p>
                     </div>
                   </span>
@@ -157,9 +170,43 @@ export default function Book() {
             </hgroup>
             <hr />
             <br />
-            <button className="bg-primary p-5 text-2xl font-bold rounded-lg text-white">
-              {price} лв
-            </button>
+            <div className="flex gap-3">
+              <a
+                onClick={() => {
+                  setIsPaidWithCard(false);
+                }}
+                className={`transition-all flex flex-grow border-2 border-primary rounded-lg cursor-pointer p-4 justify-center font-bold ${
+                  !isPaidWithCard
+                    ? "text-whity bg-base-200 hover:bg-base-100"
+                    : "hover:bg-base-50"
+                }`}
+              >
+                Плати на място
+              </a>
+              <a
+                onClick={() => {
+                  setIsPaidWithCard(true);
+                }}
+                className={`transition-all flex flex-grow border-2 border-primary rounded-lg cursor-pointer p-4 justify-center font-bold ${
+                  isPaidWithCard
+                    ? "text-whity bg-base-200 hover:bg-base-100"
+                    : "hover:bg-base-50"
+                }`}
+              >
+                Плати онлайн
+              </a>
+            </div>
+            {isPaidWithCard && (
+              <Elements stripe={stripePromise}>
+                <PaymentForm price={10} />
+              </Elements>
+            )}
+
+            {!isPaidWithCard && (
+              <button className="bg-primary p-5 text-2xl font-bold rounded-lg text-white hover:brightness-125 transition-all">
+                {price} лв
+              </button>
+            )}
           </>
         )}
       </form>
