@@ -36,6 +36,10 @@ header {
                     padding: 6px 20px;
                     border-radius: 40px;
                 }
+
+                &_link:hover {
+                    background-color: colors.$yellow;
+                }
             }
         }
 
