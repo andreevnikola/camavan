@@ -54,7 +54,7 @@
             }
 
             &_description{
-                text-align: justify;
+                text-align: left;
 
                 p{
                     background-color: colors.$green;
@@ -67,6 +67,32 @@
 
     
     @include breakpoints.media("<=phone"){
+        
+        padding-top: 30px;
+        padding-inline: 0;
+        margin-top: 100px;
+        text-align: center;
+
+        h2{
+            font-size: typography.$font-size-xl;
+            padding-inline: 20px;
+        }
+        .features{
+            grid-template-columns: 1fr;
+
+            &_feature{
+                margin: 0 auto;
+                width: 80%;
+                &_title{
+                    h3{
+                        font-size: typography.$font-size-lg;
+                    }
+                }
+            }
+        }
+    }
+
+    @include breakpoints.media(">phone", "<=tablet"){
         margin-top: 100px;
         text-align: center;
 
@@ -77,6 +103,55 @@
             grid-template-columns: 1fr;
 
             &_feature{
+                &_title{
+                    h3{
+                        font-size: typography.$font-size-lg;
+                    }
+                }
+            }
+        }
+    }
+
+    @include breakpoints.media(">tablet", "<=desktop"){
+        margin-top: 100px;
+        padding-top: 30px;
+        
+        padding-inline: 0;
+        text-align: center;
+
+        h2{
+            font-size: typography.$font-size-xl;
+        }
+        .features{
+            grid-template-columns: 1fr;
+
+            &_feature{
+                margin: 0 auto;
+                width: 50%;
+                &_title{
+                    h3{
+                        font-size: typography.$font-size-lg;
+                    }
+                }
+            }
+        }
+    }
+
+    @include breakpoints.media(">desktop", "<=LGdesktop"){
+        margin-top: 100px;
+        padding-top: 30px;
+        padding-inline: 0;
+        text-align: center;
+
+        h2{
+            font-size: typography.$font-size-xl;
+        }
+        .features{
+            padding-top: 50px;
+            padding-inline: 20px;
+
+            &_feature{
+                margin: 0 auto;
                 &_title{
                     h3{
                         font-size: typography.$font-size-lg;

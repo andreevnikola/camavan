@@ -46,18 +46,21 @@
             justify-content: center;
 
             h1{
-                font-size: typography.$font-size-2xl;
+                font-size: typography.$font-size-xl;
                 text-align: center;
             }
         }
     }
-
-    
+      
     @include breakpoints.media(">phone", "<=tablet"){
         padding: 0;
-        height: 50vh;
+        height: 40vh;
         flex-direction: column;
         gap: 50px;
+
+        .hero-image{
+            height: 100%;
+        }
 
         .hero-title{
             top: 15%;
@@ -68,8 +71,58 @@
             justify-content: center;
 
             h1{
-                font-size: 20px;
+                font-size: typography.$font-size-2xl;
                 text-align: center;
+            }
+        }
+    }
+
+    @include breakpoints.media(">tablet", "<=desktop"){
+        padding: 0;
+        height: 40vh;
+        flex-direction: column;
+        gap: 50px;
+
+        .hero-image{
+            height: 100%;
+        }
+
+        .hero-title{
+            right: 0;
+            top: 15%;
+            margin-left: 0;
+            padding-top: 20px;
+            width: 100%;
+            justify-content: center;
+
+            h1{
+                width: 12ch;
+                font-size: typography.$font-size-2xl;
+                text-align: center;
+            }
+        }
+    }
+
+    @include breakpoints.media(">desktop", "<=LGdesktop"){
+        padding: 0;
+        height: 80vh;
+        flex-direction: column;
+        gap: 50px;
+
+        .hero-image{
+            height: 100%;
+        }
+
+        .hero-title{
+            right: 80px;
+            margin-left: 0;
+            padding-top: 20px;
+            width: 100%;
+            justify-content: flex-end;
+
+            h1{
+                width: 12ch;
+                font-size: typography.$font-size-2xl;
             }
         }
     }

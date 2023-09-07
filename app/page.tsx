@@ -50,7 +50,7 @@ export default function Home() {
         </div>
       </section>
       <section id="about-us">
-        <img className="person" src="/images/person.jpg" alt="person"/>
+        <img className="person" src="/images/person-transperent.png" alt="person"/>
         <div className="about-us-description">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse illum unde libero reprehenderit officia id ipsum, voluptatem rerum. At excepturi enim nesciunt praesentium debitis vitae asperiores corporis saepe voluptatem.</p>
           <Link className="map_directing_button" href="#">Бутон за скролване</Link>
