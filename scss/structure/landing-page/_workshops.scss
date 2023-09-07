@@ -4,32 +4,32 @@
 
 
 
-#workshops{
+#workshops {
     padding-inline: 250px;
     padding-top: variables.$space-between-sections;
 
-    .workshops{
+    .workshops {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
 
-        &-one-to-three{
+        &-one-to-three {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
 
-            .workshop-item{
+            .workshop-item {
                 width: 100%;
                 padding: 60px;
                 border-radius: 30px;
 
-                h3{
+                h3 {
                     color: white;
                 }
 
-                &.one{
-                    background-image: url(../../../public/images/workshop-1.jpg);
+                &.one {
+                    background-image: url(/images/workshop-1.jpg);
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position-y: 50%;
@@ -37,8 +37,8 @@
                     grid-row: 1/2;
                 }
 
-                &.two{
-                    background-image: url(../../../public/images/workshop-2.jpg);
+                &.two {
+                    background-image: url(/images/workshop-2.jpg);
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position-y: 50%;
@@ -46,8 +46,8 @@
                     grid-row: 2/3;
                 }
 
-                &.three{
-                    background-image: url(../../../public/images/workshop-3.png);
+                &.three {
+                    background-image: url(/images/workshop-3.png);
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position-y: 50%;
@@ -59,14 +59,14 @@
 
         }
 
-        &-fourth{
-            background-image: url(../../../public/images/workshop-4.jpg);
+        &-fourth {
+            background-image: url(/images/workshop-4.jpg);
             background-size: cover;
             border-radius: 30px;
             background-repeat: no-repeat;
             color: white;
 
-            .workshop-item-expanded{
+            .workshop-item-expanded {
                 grid-column: 2/3;
                 grid-row: 1/4;
                 padding: 30px;
@@ -74,15 +74,15 @@
         }
     }
 
-    @include breakpoints.media("<=phone"){
+    @include breakpoints.media("<=phone") {
         padding-inline: 0;
 
-        .workshops{
+        .workshops {
             grid-template-columns: 100%;
 
-            &-one-to-three{
+            &-one-to-three {
 
-                .workshop-item{
+                .workshop-item {
                     width: 80%;
                     height: 350px;
                     display: flex;
@@ -91,10 +91,11 @@
                 }
             }
 
-            &-fourth{
+            &-fourth {
                 margin: 0 auto;
                 width: 80%;
-                .workshop-item-expanded{
+
+                .workshop-item-expanded {
                     height: 350px;
                     grid-column: 1/2;
                     grid-row: 3/4;
@@ -104,18 +105,18 @@
                 }
             }
         }
-        
+
     }
 
-    @include breakpoints.media(">phone", "<=tablet"){
+    @include breakpoints.media(">phone", "<=tablet") {
         padding-inline: 0;
 
-        .workshops{
+        .workshops {
             grid-template-columns: 100%;
 
-            &-one-to-three{
+            &-one-to-three {
 
-                .workshop-item{
+                .workshop-item {
                     width: 80%;
                     height: 350px;
                     display: flex;
@@ -124,10 +125,11 @@
                 }
             }
 
-            &-fourth{
+            &-fourth {
                 margin: 0 auto;
                 width: 80%;
-                .workshop-item-expanded{
+
+                .workshop-item-expanded {
                     height: 350px;
                     grid-column: 1/2;
                     grid-row: 3/4;
@@ -137,18 +139,18 @@
                 }
             }
         }
-        
+
     }
 
-    @include breakpoints.media(">tablet", "<=desktop"){
+    @include breakpoints.media(">tablet", "<=desktop") {
         padding-inline: 0px;
 
-        .workshops{
+        .workshops {
             grid-template-columns: 100%;
 
-            &-one-to-three{
+            &-one-to-three {
 
-                .workshop-item{
+                .workshop-item {
                     width: 80%;
                     height: 350px;
                     display: flex;
@@ -157,11 +159,12 @@
                 }
             }
 
-            &-fourth{
+            &-fourth {
                 background-position-y: 30%;
                 margin: 0 auto;
                 width: 80%;
-                .workshop-item-expanded{
+
+                .workshop-item-expanded {
                     height: 350px;
                     grid-column: 1/2;
                     grid-row: 3/4;
@@ -171,28 +174,30 @@
                 }
             }
         }
-        
+
     }
 
-    @include breakpoints.media(">desktop", "<=LGdesktop"){
+    @include breakpoints.media(">desktop", "<=LGdesktop") {
         padding-inline: 80px;
 
-        .workshops{
+        .workshops {
             margin: 0 auto;
-            &-one-to-three{
 
-                .workshop-item{
+            &-one-to-three {
+
+                .workshop-item {
                     width: 100%;
                     padding: 60px;
                     border-radius: 30px;
                 }
             }
 
-            &-fourth{
+            &-fourth {
                 background-position-y: 30%;
                 margin: 0 auto;
                 width: 80%;
-                .workshop-item-expanded{
+
+                .workshop-item-expanded {
                     height: 350px;
                     grid-column: 1/2;
                     grid-row: 3/4;
@@ -202,6 +207,6 @@
                 }
             }
         }
-        
+
     }
 }
