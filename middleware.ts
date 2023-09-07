@@ -8,7 +8,8 @@ export default authMiddleware({
     "/api/:rote*",
     "/events",
     "/workshops",
-    "/workshops/:workshop*"
+    "/workshops/:workshop*",
+    "/about-us"
   ],
   ignoredRoutes: ["/api/webhooks/clerk"],
 });

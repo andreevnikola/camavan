@@ -29,38 +29,23 @@ export default function Home() {
                 <h3>Подвижност</h3>
               </div>
               <div className="features_feature_description">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia in adipisci commodi molestias, distinctio laborum rem
-                  consequatur impedit ipsam veritatis accusantium officiis eaque
-                  sit porro incidunt recusandae autem voluptates maxime?
-                </p>
+                <p>Подвижността из цялата страна ни позволява да посетим много различни градове.</p>
               </div>
             </div>
             <div className="features_feature">
               <div className="features_feature_title">
-                <h3>Подвижност</h3>
+                <h3>Уникалност</h3>
               </div>
               <div className="features_feature_description">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia in adipisci commodi molestias, distinctio laborum rem
-                  consequatur impedit ipsam veritatis accusantium officiis eaque
-                  sit porro incidunt recusandae autem voluptates maxime?
-                </p>
+                <p>Предлагаме главно ретро заснемане и обучение интересно за всяка възраст.</p>
               </div>
             </div>
             <div className="features_feature">
               <div className="features_feature_title">
-                <h3>Подвижонст</h3>
+                <h3>Обучение</h3>
               </div>
               <div className="features_feature_description">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia in adipisci commodi molestias, distinctio laborum rem
-                  consequatur impedit ipsam veritatis accusantium officiis eaque
-                  sit porro incidunt recusandae autem voluptates maxime?
-                </p>
+                <p>Работилниците ни се водят от професионалисти във фотографията и изкуствата</p>
               </div>
             </div>
           </div>
@@ -73,21 +58,8 @@ export default function Home() {
           />
           <div className="about-us-description">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-              esse illum unde libero reprehenderit officia id ipsum, voluptatem
-              rerum. At excepturi enim nesciunt praesentium debitis vitae
-              asperiores corporis saepe voluptatem.orem ipsum dolor sit amet
-              consectetur adipisicing elit. Aperiam esse illum unde libero
-              reprehenderit officia id ipsum, voluptatem rerum. At excepturi
-              enim nesciunt praesentium debitis vitae asperiores corporis saepe
-              voluptatem.orem ipsum dolor sit amet consectetur adipisicing elit.
-              Aperiam esse illum unde libero reprehenderit officia id ipsum,
-              voluptatem rerum. At excepturi enim nesciunt praesentium debitis
-              vitae asperiores corporis saepe voluptatem.
+            Това е нашият професионален фотограф - Илия. Занимава се с фотография от 25 години. Завършил е фотография в Берлин и е развил две магистратури в България на тема антични камери. Участва в много изложби със своите снимки. Освен цялата си професионална кариера, той снима навсякъде из България и разказва за пътуванията си в снимки. Занимава се с многобройни ретро камери и проявяване на снимки. Той ще ви покаже основите на фотографията. За него фотографията е като инструмент, на който той иска да научи всички нас.
             </p>
-            <Link className="map_directing_button" href="#">
-              Бутон за скролване
-            </Link>
           </div>
         </section>
         <section id="map">
@@ -100,18 +72,18 @@ export default function Home() {
           <div className="workshops">
             <div className="workshops-one-to-three">
               <div className="workshop-item one">
-                <h3>workshop 1</h3>
+                <h3>Зората</h3>
               </div>
               <div className="workshop-item two">
-                <h3>workshop 1</h3>
+                <h3>Революция</h3>
               </div>
               <div className="workshop-item three">
-                <h3>workshop 1</h3>
+                <h3>Краят на ретрото</h3>
               </div>
             </div>
             <div className="workshops-fourth">
               <div className="workshop-item-expanded">
-                <h3>workshop 1</h3>
+                <h3>Семеен</h3>
               </div>
             </div>
           </div>

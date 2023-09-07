@@ -1,0 +1,64 @@
+@use "@/scss/abstracts/_variables.scss";
+@use "@/scss/abstracts/_colors.scss";
+@use "@/scss/breakpoints/_breakpoints.scss";
+
+#caravan{
+    margin-top: 100px;
+
+    h2{
+        padding-inline: variables.$wrapper;
+        font-size: 80px;
+    }
+
+    .caravan-description{
+        margin-top: 80px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+
+        .caravan-description-image{
+            width: 60%;
+            border-radius: 40px;
+        }
+
+        .caravan-description-text{
+            z-index: 1000;
+            margin-right: -100px;
+            height: 80%;
+            width: 40%;
+            background-color: colors.$yellow;
+            padding: 80px;
+            color: white;
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+            font-size: 25px;
+        }
+    }
+
+    @include breakpoints.media("<=phone"){
+        h2{
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .caravan-description{
+            flex-direction: column;
+
+            .caravan-description-image{
+                width: 100%;
+                border-top-left-radius: 40px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+    
+            .caravan-description-text{
+                margin: 0;
+                width: 100%;
+                border-top-right-radius: 0;
+                border-top-left-radius: 0;
+
+            }
+        }
+    }
+}
